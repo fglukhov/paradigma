@@ -46,6 +46,36 @@ var baseUrl = "";
 
 $(document).ready(function() {
 
+	// Contacts slider
+
+	$(".contacts-pics-slider").slick({
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		rows: 0,
+		speed: 1000,
+		infinite: true,
+		fade: true,
+		autoplay: true,
+		autoplaySpeed: 2000,
+		arrows: false,
+		swipe: false
+	});
+
+	$(".contacts-masks-slider").slick({
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		rows: 0,
+		speed: 1000,
+		infinite: true,
+		fade: true,
+		autoplay: true,
+		autoplaySpeed: 2000,
+		arrows: false,
+		swipe: false
+	});
+
+	// Contacts slider END
+
 	// Reviews slider
 
 	$(".reviews-slider").slick({
@@ -53,7 +83,8 @@ $(document).ready(function() {
 		slidesToScroll: 1,
 		rows: 0,
 		speed: 1000,
-		infinite: true
+		infinite: true,
+		adaptiveHeight: true
 	});
 
 	// Reviews slider END
@@ -317,12 +348,12 @@ $(document).ready(function() {
 	ymaps.ready(function () {
 
 		var myMap = new ymaps.Map('contactsMap', {
-				center: [55.720357, 37.626003],
-				zoom: 16,
+				center: [55.795332, 37.601654],
+				zoom: 17,
 				controls: ['zoomControl']
 			}, {}),
 
-			myPlacemark = new ymaps.Placemark([55.720357, 37.631003], {
+			myPlacemark = new ymaps.Placemark([55.795332, 37.601654], {
 				hintContent: '',
 				balloonContent: ''
 			}, {
@@ -332,10 +363,10 @@ $(document).ready(function() {
 				// Своё изображение иконки метки.
 				iconImageHref: 'images/map-pin.svg',
 				// Размеры метки.
-				iconImageSize: [37, 55],
+				iconImageSize: [100, 87],
 				// Смещение левого верхнего угла иконки относительно
 				// её "ножки" (точки привязки).
-				iconImageOffset: [-18, -55]
+				iconImageOffset: [-50, -87]
 			});
 
 		myMap.behaviors.disable('scrollZoom');
@@ -343,15 +374,7 @@ $(document).ready(function() {
 		myMap.geoObjects
 			.add(myPlacemark);
 
-		$(window).on("load resize",function () {
 
-			if ($("#mobile-indicator").css("display") == "block") {
-				myMap.setCenter([55.720357, 37.631003]);
-			} else {
-				myMap.setCenter([55.720357, 37.626003]);
-			}
-
-		});
 
 	});
 
