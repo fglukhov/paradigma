@@ -46,6 +46,31 @@ var baseUrl = "";
 
 $(document).ready(function() {
 
+	// Service modal
+
+	$("[data-target='#serviceModal']").click(function () {
+
+		$("#serviceModal .modal-content-inner").addClass("loading").html("");
+
+		$.ajax({
+			url: $(this).data("url"),
+			dataType: "html"
+		}).done(function (data) {
+
+			$("#serviceModal").find(".modal-content-inner").html($(data));
+
+			$("#serviceModal .modal-content-inner").removeClass("loading");
+
+			validateForms();
+
+		});
+
+
+
+	});
+
+	// Service modal END
+
 	// Contacts slider
 
 	$(".contacts-pics-slider").slick({
@@ -56,7 +81,7 @@ $(document).ready(function() {
 		infinite: true,
 		fade: true,
 		autoplay: true,
-		autoplaySpeed: 2000,
+		autoplaySpeed: 1000,
 		arrows: false,
 		swipe: false
 	});
@@ -69,7 +94,7 @@ $(document).ready(function() {
 		infinite: true,
 		fade: true,
 		autoplay: true,
-		autoplaySpeed: 2000,
+		autoplaySpeed: 750,
 		arrows: false,
 		swipe: false
 	});
